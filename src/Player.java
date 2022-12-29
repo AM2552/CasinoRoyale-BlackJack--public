@@ -1,8 +1,9 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Player {
+public class Player extends Person {
 
     // variables for Player
     private String name;
@@ -67,7 +68,10 @@ public class Player {
     }
 
     // TODO
-    public void hit(Card card, ArrayList<Card> deck) {
+    public void hit(Card card) {
+
+
+
 
     }
 
