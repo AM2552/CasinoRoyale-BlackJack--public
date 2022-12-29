@@ -1,5 +1,6 @@
 package src;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardDeck {
@@ -33,9 +34,26 @@ public class CardDeck {
 
 
 
-    public ArrayList<Card> shuffle() {return null;}
+    public CardDeck shuffle() {
+        ArrayList<Card> temp = new ArrayList<>();
+        for (Card card : deck) {
+            temp.add(deck.get(Math.random(52)));
+        }
+
+        return null;
+    }
 
 
+    public String toString(){
+        String output = "";
+        for(Card card: deck){
+            output += card;
+            output += "\n";
+        }
+        return output;
+    }
+
+    //ToDo deckShuffle
 
 
 

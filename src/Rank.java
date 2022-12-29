@@ -1,8 +1,8 @@
 package src;
 
 public enum Rank {
-    lowACE("lowAce",1),
-    highACE("highAce", 11),
+    // lowACE("lowAce",1),
+    ACE("Ace", 11),
     TWO("Two", 2),
     THREE("Three", 3),
     FOUR("Four",4),
