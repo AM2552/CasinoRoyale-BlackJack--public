@@ -22,6 +22,9 @@ public class Hand {
 
     public void clearHand() {}
 
+    //ToDo addCardToHand
+
+
 
 
 
