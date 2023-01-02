@@ -1,6 +1,5 @@
 package src;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardDeck {
@@ -8,18 +7,17 @@ public class CardDeck {
     private ArrayList<Card> deck;
     private ArrayList<Card> trash;
 
-
+    /* redundant constructor
     public CardDeck() {
         deck = new ArrayList<Card>();
     }
+    */
 
-    public CardDeck(boolean generate) {
+    public CardDeck() {
         deck = new ArrayList<Card>();
-        if(generate) {
-            for (Suit suit : Suit.values()) {
-                for (Rank rank : Rank.values()) {
-                    deck.add(new Card(rank, suit));
-                }
+        for (Suit suit : Suit.values()) {
+            for (Rank rank : Rank.values()) {
+                deck.add(new Card(rank, suit));
             }
         }
     }
@@ -34,15 +32,18 @@ public class CardDeck {
 
 
 
-    public CardDeck shuffle() {
-        ArrayList<Card> temp = new ArrayList<>();
-        for (Card card : deck) {
-            temp.add(deck.get(Math.random(52)));
+    public void shuffle() {
+        ArrayList<Card> temp = new ArrayList<>(this.deck);
+        ArrayList<Card> shuffled = new ArrayList<>();
+        int range = 51;
+        for (Card card : temp) {
+            int index = (int) (Math.random()*range);
+            shuffled.add(this.deck.get(index));
+            deck.remove(index);
+            range--;
         }
-
-        return null;
+        this.deck.addAll(shuffled);
     }
-
 
     public String toString(){
         String output = "";
@@ -52,8 +53,6 @@ public class CardDeck {
         }
         return output;
     }
-
-    //ToDo deckShuffle
 
 
 
