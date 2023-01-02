@@ -13,11 +13,12 @@ public class CardDeck {
     }
     */
 
-    public CardDeck() {
-        deck = new ArrayList<Card>();
-        for (Suit suit : Suit.values()) {
-            for (Rank rank : Rank.values()) {
-                deck.add(new Card(rank, suit));
+    public CardDeck(int decks) {
+        deck = new ArrayList<>();
+        for (int i = 0; i < decks; i++)
+            for (Suit suit : Suit.values()) {
+                for (Rank rank : Rank.values()) {
+                    deck.add(new Card(rank, suit));
             }
         }
     }
@@ -33,14 +34,12 @@ public class CardDeck {
 
 
     public void shuffle() {
-        ArrayList<Card> temp = new ArrayList<>(this.deck);
         ArrayList<Card> shuffled = new ArrayList<>();
-        int range = 51;
-        for (Card card : temp) {
-            int index = (int) (Math.random()*range);
+        int range = this.deck.size();
+        for (int i = 0; i < range; i++) {
+            int index = (int) (Math.random()*deck.size());
             shuffled.add(this.deck.get(index));
             deck.remove(index);
-            range--;
         }
         this.deck.addAll(shuffled);
     }

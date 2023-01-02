@@ -8,8 +8,5 @@ public class BlackJack {
         System.out.println(deck);
         deck.shuffle();
         System.out.println(deck);
-
-
-
     }
 }
