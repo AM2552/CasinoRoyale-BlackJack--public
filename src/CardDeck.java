@@ -47,9 +47,12 @@ public class CardDeck {
 
     public String toString(){
         String output = "";
+        int counter = 1;
         for(Card card: deck){
+            output += "card" + counter + " ";
             output += card;
             output += "\n";
+            counter++;
         }
         return output;
     }
