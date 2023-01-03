@@ -13,9 +13,9 @@ public class CardDeck {
     }
     */
 
-    public CardDeck(int decks) {
-        deck = new ArrayList<>();
-        for (int i = 0; i < decks; i++)
+    public CardDeck(int numberOfDecks) {
+        this.deck = new ArrayList<>();
+        for (int i = 0; i < numberOfDecks; i++)
             for (Suit suit : Suit.values()) {
                 for (Rank rank : Rank.values()) {
                     deck.add(new Card(rank, suit));
@@ -27,8 +27,19 @@ public class CardDeck {
         return deck;
     }
 
-    public Card drawCard(CardDeck deck) {
-        return deck.deck.get(0);
+    public ArrayList<Card> getTrash() {
+        return trash;
+    }
+
+    public void addCardsToTrash(ArrayList<Card> cards){
+        this.trash.addAll(cards);
+    }
+
+
+    public Card drawCard() {
+        Card nextCard = this.deck.get(0);
+        this.deck.remove(0);
+        return nextCard;
     }
 
 
@@ -53,6 +64,8 @@ public class CardDeck {
             output += "\n";
             counter++;
         }
+
+
         return output;
     }
 

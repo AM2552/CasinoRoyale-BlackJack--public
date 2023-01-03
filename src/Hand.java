@@ -17,17 +17,36 @@ public class Hand {
         return sum;
     }
 
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
 
-    public void addCard() {}
+    public void addCardFromDeck(CardDeck deck) {
+        Card newCard = deck.drawCard();
+        setSum(sum+newCard.getValue());
+        hand.add(newCard);
+    }
 
-    public void clearHand() {}
+    public ArrayList<Card> clearHand() {
+        ArrayList<Card> trash = new ArrayList<>(this.hand);
+        this.hand.clear();
+        this.sum = 0;
+        return trash;
+    }
 
-    //ToDo addCardToHand
+    public void clearWholeHand(CardDeck trash) {
+        trash.addCardsToTrash(hand);
+        hand.clear();
+        this.sum = 0;
+    }
 
 
-
-
-
-
-
+    @Override
+    public String toString() {
+        String cardsInHand = "";
+        for(Card card : hand){
+            cardsInHand += card + " - ";
+        }
+        return cardsInHand;
+    }
 }
