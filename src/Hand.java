@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import src.CardDeck;
 
 public class Hand {
 
@@ -8,9 +9,9 @@ public class Hand {
     private int sum;
 
 
-    public Hand(ArrayList<Card> hand, int sum){
-        this.hand = hand;
-        this.sum = sum;
+    public Hand(){
+        hand = new ArrayList<>();
+        sum = 0;
     }
 
     public int getSum() {

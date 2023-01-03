@@ -7,11 +7,9 @@ public class CardDeck {
     private ArrayList<Card> deck;
     private ArrayList<Card> trash;
 
-    /* redundant constructor
     public CardDeck() {
-        deck = new ArrayList<Card>();
+        this.trash = new ArrayList<>();
     }
-    */
 
     public CardDeck(int numberOfDecks) {
         this.deck = new ArrayList<>();
@@ -50,7 +48,7 @@ public class CardDeck {
         for (int i = 0; i < range; i++) {
             int index = (int) (Math.random()*deck.size());
             shuffled.add(this.deck.get(index));
-            deck.remove(index);
+            this.deck.remove(index);
         }
         this.deck.addAll(shuffled);
     }
@@ -58,7 +56,7 @@ public class CardDeck {
     public String toString(){
         String output = "";
         int counter = 1;
-        for(Card card: deck){
+        for(Card card: this.deck){
             output += "card" + counter + " ";
             output += card;
             output += "\n";
