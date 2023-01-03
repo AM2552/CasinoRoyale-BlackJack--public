@@ -6,20 +6,11 @@ import java.util.Collections;
 public class Player extends Person {
 
     // variables for Player
-    private String name;
     private double balance;
     private double bet;
-    private Hand hand;
-    private boolean isVictor = false;
     private boolean isStanding = false;
 
-    // setter & getter for name
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
+
 
     // setter & getter for balance
     public void setBalance(double balance) {
@@ -37,21 +28,6 @@ public class Player extends Person {
         return bet;
     }
 
-    // setter & getter for hand
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
-    public Hand getHand() {
-        return hand;
-    }
-
-    // set & check for isVictor
-    public void setVictor(boolean victor) {
-        isVictor = victor;
-    }
-    public boolean getVictor() {
-        return isVictor;
-    }
 
     // set & check for isStanding
     public void setStanding(boolean standing) {
@@ -61,19 +37,16 @@ public class Player extends Person {
         return isStanding;
     }
 
+//    public int getCardSum() {
+//        return
+//    }
+
     // constructors
     public Player (String name, double balance) {
-        this.name = name;
+        super(name);
         this.balance = balance;
     }
 
-    // TODO
-    public void hit(Card card) {
-
-
-
-
-    }
 
     public void stand(Hand hand) {
         setStanding(true);

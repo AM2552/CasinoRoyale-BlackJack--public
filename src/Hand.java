@@ -22,24 +22,16 @@ public class Hand {
         this.sum = sum;
     }
 
-    public void addCardFromDeck(CardDeck deck) {
-        Card newCard = deck.drawCard();
-        setSum(sum+newCard.getValue());
-        hand.add(newCard);
+    public ArrayList<Card> getHand() {
+        return this.hand;
     }
 
-    public ArrayList<Card> clearHand() {
-        ArrayList<Card> trash = new ArrayList<>(this.hand);
-        this.hand.clear();
-        this.sum = 0;
-        return trash;
+//    Programmlogik gehört nicht in Model Klassen rein daher:
+    public void clearHand() {
+        this.hand = new ArrayList<>();
+        this.setSum(0);
     }
-
-    public void clearWholeHand(CardDeck trash) {
-        trash.addCardsToTrash(hand);
-        hand.clear();
-        this.sum = 0;
-    }
+//    Ausführung der Logik dann in Game / BlackJack
 
 
     @Override
@@ -49,5 +41,10 @@ public class Hand {
             cardsInHand += card + " - ";
         }
         return cardsInHand;
+    }
+
+    public void addCardToHand(Card newCard)
+    {
+        this.hand.add(newCard);
     }
 }
