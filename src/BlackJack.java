@@ -38,7 +38,7 @@ public class BlackJack {
         System.out.println(players);
 
 
-        CardDeck deck = new CardDeck(1);
+        CardDeck deck = new CardDeck();
         deck.shuffle();
 
 //

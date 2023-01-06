@@ -9,7 +9,6 @@ public class CardDeck {
 
     public CardDeck() {
         this.deck = new ArrayList<>();
-        for (int i = 0; i < numberOfDecks; i++)
             for (Suit suit : Suit.values()) {
                 for (Rank rank : Rank.values()) {
                     deck.add(new Card(rank, suit));
