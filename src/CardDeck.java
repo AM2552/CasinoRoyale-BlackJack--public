@@ -6,13 +6,8 @@ import java.util.ArrayList;
 public class CardDeck {
 
     private ArrayList<Card> deck;
-    private ArrayList<Card> trash;
 
-//    public CardDeck() {
-//    }
-
-    public CardDeck(int numberOfDecks) {
-        this.trash = new ArrayList<>();
+    public CardDeck() {
         this.deck = new ArrayList<>();
         for (int i = 0; i < numberOfDecks; i++)
             for (Suit suit : Suit.values()) {

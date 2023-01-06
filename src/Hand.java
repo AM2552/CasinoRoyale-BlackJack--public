@@ -43,8 +43,7 @@ public class Hand {
         return cardsInHand;
     }
 
-    public void addCardToHand(Card newCard)
-    {
+    public void addCardToHand(Card newCard) {
         this.hand.add(newCard);
     }
 }

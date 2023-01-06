@@ -6,4 +6,5 @@ public class Dealer extends Person {
     {
         super(name);
     }
+
 }
