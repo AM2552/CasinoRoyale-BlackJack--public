@@ -18,6 +18,10 @@ public class Hand {
         return sum;
     }
 
+    public int getHandSize() {
+        return this.hand.size();
+    }
+
     public void setSum(int sum) {
         this.sum = sum;
     }

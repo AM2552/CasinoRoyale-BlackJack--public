@@ -41,29 +41,37 @@ public class BlackJack {
         CardDeck deck = new CardDeck(1);
         deck.shuffle();
 
-        while(true) {
-            for(int i = 0; i < players.size(); i++) {
-                System.out.println("Möchtest du weiterspielen " + players.get(i).getName());
-                // bei J -> hit
-                // bei N -> setIsStanding(true)
-
-                deck.addCardFromDeck(players.get(i).getHand()); //player objekt bzw. add für die liste aufrufen
-
-                // setStanding oder hit- konsoleneingabe
+//
+//      1. Enter your Bet
+        for (Player p : players) {
+            System.out.print("Place your bet "+p.getName()+" or type 0 to skip this round: ");
+            double currentBet = input.nextDouble();
+            if (currentBet == 0) {
+                p.setStanding(true);
+            } else {
+                p.setBet(currentBet);
+                p.setBalance(p.getBalance() - currentBet);
             }
+            //erste Karte
 
-            boolean allStanding = true;
-            for(int i = 0; i < players.size(); i++) {
-                if(!players.get(i).getStanding()) {
-                    allStanding = false;
-                }
-            }
-
-            if(allStanding) {
-                break;
-            }
-            // break ausführen wenn jeder spieler isStanding true hat, dh wenn er keine Karten mehr haben will oder summe >=  21 -> isStanding auf true setzen
+//            karten austeilen
         }
+
+//      2. Erste Karten austeilen
+        for (int i = 0; i < 2; i++) {
+            for (Player p : players) {
+                deck.addCardFromDeck(p.getHand());
+            }
+            deck.addCardFromDeck(dealer.getHand());
+        }
+        for (Player p : players) {
+            System.out.println(p.getName()+" "+p.getHand());
+        }
+
+//        3. Durchlauf nur Player - Player
+
+//        4. Dealer spielt
+
 
 //        while(true) {
 //            for(int i = 0; i < players.size(); i++) {

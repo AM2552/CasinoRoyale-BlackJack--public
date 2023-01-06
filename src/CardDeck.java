@@ -21,14 +21,11 @@ public class CardDeck {
         return deck;
     }
 
-    public ArrayList<Card> getTrash() {
-        return trash;
-    }
+    //Check Deck
 
-    public void addCardsToTrash(ArrayList<Card> cards){
-        this.trash.addAll(cards);
+    public boolean checkDeck(){
+        return this.deck.size() == 0;
     }
-
 
     public Card drawCard() {
         Card nextCard = this.deck.get(0);
@@ -60,12 +57,6 @@ public class CardDeck {
         String output = "";
         int counter = 1;
         for(Card card: this.deck){
-            output += "card" + counter + " ";
-            output += card;
-            output += "\n";
-            counter++;
-        }
-        for(Card card: this.trash){
             output += "card" + counter + " ";
             output += card;
             output += "\n";
