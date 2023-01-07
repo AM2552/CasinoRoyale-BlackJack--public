@@ -41,8 +41,14 @@ public class Hand {
     @Override
     public String toString() {
         String cardsInHand = "";
+        int counter = hand.size();
         for(Card card : hand){
-            cardsInHand += card + " - ";
+            if (counter <= 1){
+            cardsInHand += card;
+            } else {
+                cardsInHand += card + " - ";
+            }
+            counter --;
         }
         return cardsInHand;
     }

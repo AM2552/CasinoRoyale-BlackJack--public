@@ -41,29 +41,47 @@ public class BlackJack {
         CardDeck deck = new CardDeck();
         deck.shuffle();
 
-//
 //      1. Enter your Bet
         for (Player p : players) {
             System.out.print("Place your bet "+p.getName()+" or type 0 to skip this round: ");
-            double currentBet = input.nextDouble();
-            if (currentBet == 0) {
-                p.setStanding(true);
-            } else {
-                p.setBet(currentBet);
-                p.setBalance(p.getBalance() - currentBet);
+            boolean isValid = false;
+            while (!isValid) {
+                if (input.hasNextDouble()) {
+                    double currentBet = input.nextDouble();
+                    if (currentBet <= 0) {
+                        // ?
+                        p.setStanding(true);
+                        isValid = true;
+                    } else {
+                        // Sufficient Balance?
+                        if (currentBet < p.getBalance() + 1) {
+                            p.setBet(currentBet);
+                            p.setBalance(p.getBalance() - currentBet);
+                            isValid = true;
+                        } else {
+                            System.out.print("Insufficient balance, please try again: ");
+                        }
+                    }
+                } else {
+                    input.next();
+                    System.out.print("Please enter a valid number for your bet: ");
+                }
             }
             //erste Karte
 
-//            karten austeilen
+            //karten austeilen
         }
 
-//      2. Erste Karten austeilen
+            //2. Erste Karten austeilen
         for (int i = 0; i < 2; i++) {
             for (Player p : players) {
                 deck.addCardFromDeck(p.getHand());
             }
             deck.addCardFromDeck(dealer.getHand());
         }
+        String dealersFirst = dealer.getName()+" "+dealer.getHand();
+        int indexOfMinus = dealersFirst.indexOf("-");
+        System.out.println(dealersFirst.substring(0, indexOfMinus) + " - [Hidden] (?)"); // Zweite Karte verdeckt
         for (Player p : players) {
             System.out.println(p.getName()+" "+p.getHand());
         }
