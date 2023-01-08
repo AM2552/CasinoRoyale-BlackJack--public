@@ -21,7 +21,7 @@ public class CardDeck {
     }
 
     //Check Deck
-
+    // returns True if deck is empty
     public boolean checkDeck(){
         return this.deck.size() == 0;
     }

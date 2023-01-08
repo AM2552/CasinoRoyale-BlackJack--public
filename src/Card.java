@@ -21,6 +21,10 @@ public class Card {
         return rank.rankValue;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         return ("["+rank+" of "+ suit + "] ("+this.getValue()+")");

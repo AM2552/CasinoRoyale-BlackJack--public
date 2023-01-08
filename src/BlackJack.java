@@ -9,7 +9,9 @@ public class BlackJack {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // **Game Start**
+        /*
+        Initialization of Players from 13-60
+         */
         System.out.print("Welcome to Black Jack!\n" +
                 "How many players will join this game? Please type in a number from 1-10: ");
         boolean isValid = false;
@@ -51,16 +53,20 @@ public class BlackJack {
 
         Dealer dealer = new Dealer("Dealer");
         players.addAll(List.of(player));
-
-        System.out.println("Das spiel Startet mit folgenden Spielern: ");
-
+        System.out.println("The game starts with following players: ");
         System.out.println();
         System.out.println(players);
         System.out.println();
 
+        /*
+        Creating the Deck
+         */
         CardDeck deck = new CardDeck();
         deck.shuffle();
-//      1.
+
+        /*
+        Place bets
+         */
         for (Player p : players) {
             System.out.print(p.getName()+", place your bet or type 0 to skip this round: ");
             isValid = false;
@@ -88,7 +94,11 @@ public class BlackJack {
             }
         }
         System.out.println();
-            //2. Erste Karten austeilen
+
+
+        /*
+        Erstes Kartenpaar wird ausgeteilt
+         */
         for (int i = 0; i < 2; i++) {
             for (Player p : players) {
                 deck.addCardFromDeck(p.getHand());
@@ -102,6 +112,8 @@ public class BlackJack {
             System.out.println(p.getName()+" "+p.getHand());
         }
         System.out.println();
+
+        // Spielrunden
         for (Player p : players) {
             if (p.getHand().getBlackjack()) {
                 p.setStanding(true);
@@ -114,9 +126,23 @@ public class BlackJack {
                     switch (standOrHit) {
                         case "h":
                             //fetch a new card
+                            if (deck.checkDeck()) {
+                                deck =  new CardDeck();
+                                deck.shuffle();
+                            }
                             deck.addCardFromDeck(p.getHand());
                             //print hand
                             System.out.println(p.getName() + " " + p.getHand());
+                            if (p.getHand().getSum() == 21 ) {
+                                p.setStanding(true);
+                                break;
+                            }
+                            if (p.getHand().getSum() > 21 ) {
+                                System.out.println("Bust!");
+                                busted = true;
+                                p.setStanding(true);
+                                break;
+                            }
                             //new choice
                             System.out.print(p.getName()+", type 'h' to hit or 's' to stand: ");
                             break;
@@ -160,21 +186,8 @@ public class BlackJack {
 //            // break ausführen wenn jeder spieler isStanding true hat, dh wenn er keine Karten mehr haben will oder summe >=  21 -> isStanding auf true setzen
 //        }
 //
-//        for(int i = 0; i < players.size(); i++) {
-////            players.get(i).getVictor();
-//        }
-//
-//        Hand testHand = new Hand();
-//        deck.addCardFromDeck(testHand);
-//        deck.addCardFromDeck(testHand);
-//
-//        System.out.println(testHand);
-//        System.out.println(testHand.getSum());
-//
-////        deck.addCardsToTrash(testHand.getHand());
-//        testHand.clearHand();
-//        System.out.println(testHand);
-//        System.out.println(testHand.getSum());
+
+
 
     }
 
