@@ -12,13 +12,31 @@ public class BlackJack {
         // **Game Start**
         System.out.print("Welcome to Black Jack!\n" +
                 "How many players will join this game? Please type in a number from 1-10: ");
-        Player[] player = new Player[input.nextInt()];
+        boolean isValid = false;
+        int playerCount = 0;
+        while (!isValid) {
+            if (input.hasNextInt()) {
+                isValid = true;
+                playerCount = input.nextInt();
+                if (!(playerCount < 11 && playerCount > 0)) {
+                    System.out.print("Please enter a valid number from 1-10: "); isValid = false;
+                }
+            } else {
+                input.next();
+                System.out.print("Please enter a valid number from 1-10: ");
+            }
+        }
+
+        Player[] player = new Player[playerCount];
+
+        //Idee: Start balance für alle Spieler gleich?
+
         for (int i = 0; i < player.length; i++) {
             System.out.print("Please enter your name Player" + (i + 1) + ": ");
             String name = input.next();
             System.out.print("Please type in your starting balance: ");
 
-            boolean isValid = false;
+            isValid = false;
             while (!isValid) {
                 if (input.hasNextDouble()) {
                     double balance = input.nextDouble();
@@ -35,16 +53,17 @@ public class BlackJack {
         players.addAll(List.of(player));
 
         System.out.println("Das spiel Startet mit folgenden Spielern: ");
-        System.out.println(players);
 
+        System.out.println();
+        System.out.println(players);
+        System.out.println();
 
         CardDeck deck = new CardDeck();
         deck.shuffle();
-
-//      1. Enter your Bet
+//      1.
         for (Player p : players) {
-            System.out.print("Place your bet "+p.getName()+" or type 0 to skip this round: ");
-            boolean isValid = false;
+            System.out.print(p.getName()+", place your bet or type 0 to skip this round: ");
+            isValid = false;
             while (!isValid) {
                 if (input.hasNextDouble()) {
                     double currentBet = input.nextDouble();
@@ -63,15 +82,12 @@ public class BlackJack {
                         }
                     }
                 } else {
-                    input.next();
+                    input.nextDouble();
                     System.out.print("Please enter a valid number for your bet: ");
                 }
             }
-            //erste Karte
-
-            //karten austeilen
         }
-
+        System.out.println();
             //2. Erste Karten austeilen
         for (int i = 0; i < 2; i++) {
             for (Player p : players) {
@@ -85,7 +101,36 @@ public class BlackJack {
         for (Player p : players) {
             System.out.println(p.getName()+" "+p.getHand());
         }
-
+        System.out.println();
+        for (Player p : players) {
+            if (p.getHand().getBlackjack()) {
+                p.setStanding(true);
+                System.out.println("Blackjack!");
+            }
+            System.out.print(p.getName()+", type 'h' to hit or 's' to stand: ");
+            while (!p.getStanding()) {
+                if (input.hasNext()) {
+                    String standOrHit = input.next();
+                    switch (standOrHit) {
+                        case "h":
+                            //fetch a new card
+                            deck.addCardFromDeck(p.getHand());
+                            //print hand
+                            System.out.println(p.getName() + " " + p.getHand());
+                            //new choice
+                            System.out.print(p.getName()+", type 'h' to hit or 's' to stand: ");
+                            break;
+                        case "s":
+                            p.setStanding(true);
+                            break;
+                        default:
+                            System.out.print("Only valid inputs are h / s : ");
+                        }
+                } else {
+                    System.out.print("Please enter a valid input: ");
+                }
+            }
+        }
 //        3. Durchlauf nur Player - Player
 
 //        4. Dealer spielt

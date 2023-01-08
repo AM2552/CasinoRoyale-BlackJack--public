@@ -58,7 +58,7 @@ public class Player extends Person {
 
     @Override
     public String toString() {
-       return (this.getName()+" "+this.getBalance());
+       return (this.getName()+" "+this.getBalance()+"$");
     }
 
 }

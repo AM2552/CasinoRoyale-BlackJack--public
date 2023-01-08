@@ -1,10 +1,11 @@
 package src;
 
 public enum Suit {
-    CLUB("Clubs"),
-    DIAMOND("Diamonds"),
-    HEART("Hearts"),
-    SPADE("Spades");
+    CLUB("Clubs♣"),
+    DIAMOND("Diamonds♦"),
+    HEART("Hearts♥"),
+    SPADE("Spades♠");
+
 
     String suitName;
 

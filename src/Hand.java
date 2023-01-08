@@ -17,7 +17,7 @@ public class Hand {
     public int getSum() {
         return sum;
     }
-
+    public boolean getBlackjack() {return getSum() == 21 && hand.size() == 2; }
     public int getHandSize() {
         return this.hand.size();
     }
@@ -37,6 +37,8 @@ public class Hand {
     }
 //    Ausführung der Logik dann in Game / BlackJack
 
+    public void changeAce() {
+        }
 
     @Override
     public String toString() {
