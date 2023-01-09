@@ -17,7 +17,7 @@ Project by Alexander Mosor, Christian Ninaus, Karl Szepannek, Emir Taric & Kathr
 
     • Each player & the dealer get 2 initial cards
     • At the beginning of each gameround each player has to place his desired bet
-    • Placing an invalid bet (0 or >0) results in a stand for this gameround
+    • Placing an invalid bet (0 or <0) results in a stand for this gameround
 
 ## 👀 RULES OF THE GAME
 
