@@ -9,6 +9,7 @@ public class Player extends Person {
     private double balance;
     private double bet;
     private boolean isStanding = false;
+    private boolean isPlaying = true;
 
 
 
@@ -35,6 +36,13 @@ public class Player extends Person {
     }
     public boolean getStanding() {
         return isStanding;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
+    }
+    public boolean getPlaying() {
+        return isPlaying;
     }
 
 //    public int getCardSum() {

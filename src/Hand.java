@@ -20,6 +20,8 @@ public class Hand {
 
     // returns True if Player achieves BlackJack with initial hand of 2 cards
     public boolean getBlackjack() {return getSum() == 21 && hand.size() == 2; }
+
+    public boolean checkIfBusted() {return this.getSum() > 21; }
     public int getHandSize() {
         return this.hand.size();
     }
